@@ -1,13 +1,17 @@
 import React from "react";
 
-import Searchbar  from "./Searchbar";
+import Searchbar from "./Searchbar";
+import ImageGallery from "./ImageGallery";
 
 
 class App extends React.Component{
+  state = {
+    search: '',
+}
 
-  onHendlSearch = e => {
-  e.preventdefault()
-  console.log(e.elements.search.value)
+
+  onHendlSearch = search => {
+    this.setState({ search });
 }
 
 
@@ -15,6 +19,7 @@ class App extends React.Component{
      return (
     <div>
          <Searchbar onSearch={this.onHendlSearch} />
+         <ImageGallery search={this.state.search} />
     </div>
   );
   }

@@ -12,9 +12,9 @@
 .input{
     height: 30px;
     border-radius: 15px;
-    padding-left: 10px;
+    padding-left: 15px;
     border: none;
-    min-width: 300px;
+    min-width: 320px;
 }
 .input:focus{
     outline: 2px solid black;

@@ -1,8 +1,8 @@
+import s from './Button.module.css'
 
-
-function Button() {
-    return(<button type="submit" class="button">
-      <span class="button-label">Search</span>
+function Button({loadMore}) {
+  return (<button type="button" className={s.button} onClick={loadMore}>
+      <span className={s.buttonLabele}>Load more</span>
     </button>)
 }
 
