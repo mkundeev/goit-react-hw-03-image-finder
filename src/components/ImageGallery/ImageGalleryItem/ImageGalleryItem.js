@@ -7,16 +7,19 @@ class ImageGalleryItem extends React.Component{
    
 
     onOpen = e => {
-        console.log(this.props.data)
         this.props.onClick(this.props.data)
     }
 
     render() {
         
-       return <img src={this.props.url} alt="" className={s.galleryImg} data-src={this.props.data} onClick={this.onOpen} />
+       return <img src={this.props.url} alt="" className={s.galleryImg} onClick={this.onOpen} />
      
     }
 }
-
+ImageGalleryItem.propTypes = {
+    url: PropTypes.string.isRequired,
+    data: PropTypes.string.isRequired,
+    onClick:PropTypes.func.isRequired,
+}  
 
 export default ImageGalleryItem

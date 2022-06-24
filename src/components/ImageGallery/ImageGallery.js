@@ -28,11 +28,12 @@ class ImageGallery extends React.Component{
             this.setState({ searchResults: [], page: 1, })
             this.setState({status: 'pending'})
             fetch(`https://pixabay.com/api/?q=${this.props.search}&page=1&key=27704897-33eca0a5ea9474d62773139fd&image_type=photo&orientation=horizontal&per_page=12`).then(res => res.json()).then(data => this.setState({ searchResults:data.hits, status: 'resolved'}))
+        
         }
-           
     }
 
     loadMore = () => {
+       
     this.setState((prevState) => {
     return {
       page: prevState.page + 1
@@ -68,13 +69,16 @@ class ImageGallery extends React.Component{
                         </li>  
             })}
                 </ul>
-                {this.state.showModal && <Modal url={this.state.modalUrl} onCloseRequest={this.handleToggleModal}> <img src={this.state.modalUrl} alt="" /> </Modal>}
+                {this.state.showModal && <Modal onCloseRequest={this.handleToggleModal}> <img src={this.state.modalUrl} alt="" /> </Modal>}
             <Button loadMore={this.loadMore} /></>
         }
 
     }
 }
+ImageGallery.propTypes = {
+    search: PropTypes.string.isRequired,
 
+} 
 
 
 export default ImageGallery

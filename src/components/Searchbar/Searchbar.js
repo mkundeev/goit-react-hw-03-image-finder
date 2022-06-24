@@ -44,6 +44,8 @@ search: '',
 </header>)
   }
 }
-
+Searchbar.propTypes = {
+    onSearch:PropTypes.func.isRequired,
+} 
 
 export default Searchbar

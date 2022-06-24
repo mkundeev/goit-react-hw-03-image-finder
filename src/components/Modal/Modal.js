@@ -1,11 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import s from './Modal.module.css'
 
 
 class Modal extends React.Component {
-  state = {
-    
-  }
+ 
   
   componentDidMount() {
   window.addEventListener('keydown', this.handleKeyUp); 
@@ -37,6 +36,11 @@ componentWillUnmount() {
 </div>}
 
 }
+
+Modal.propTypes = {
+    children: PropTypes.node,
+    onCloseRequest: PropTypes.func.isRequired,
+}  
 
 
 export default Modal
