@@ -10,10 +10,8 @@ class ImageGalleryItem extends React.Component{
         this.props.onClick(this.props.data)
     }
 
-    render() {
-        
+    render() {   
        return <img src={this.props.url} alt="" className={s.galleryImg} onClick={this.onOpen} />
-     
     }
 }
 ImageGalleryItem.propTypes = {

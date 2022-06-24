@@ -6,6 +6,10 @@ import ImageGalleryItem from './ImageGalleryItem';
 import Loader from 'components/Loader';
 import Button from 'components/Button';
 import Modal from 'components/Modal';
+import { axiosCongif } from 'config/axiosConfig';
+
+const { API_KEY, url, options } = axiosCongif;
+
 
 
 class ImageGallery extends React.Component{
@@ -16,18 +20,18 @@ class ImageGallery extends React.Component{
         showModal: false,
         modalUrl: '',
         }
-    
+
 
     componentDidUpdate(prevProps, prevState) {
          if (this.state.page > prevState.page) {
            this.setState({status: 'pending'})
-             fetch(`https://pixabay.com/api/?q=${this.props.search}&page=${this.state.page}&key=27704897-33eca0a5ea9474d62773139fd&image_type=photo&orientation=horizontal&per_page=12`).then(res => res.json()).then(data => this.setState((prevState) => ({ searchResults: [...prevState.searchResults, ...data.hits], status: 'resolved' }))) 
+             axios(`${url}?q=${this.props.search}&page=${this.state.page}&key=${API_KEY}${options}`).then(({data}) => this.setState((prevState) => ({ searchResults: [...prevState.searchResults, ...data.hits], status: 'resolved' }))) 
              
         }
         if (this.props.search !== prevProps.search) {
             this.setState({ searchResults: [], page: 1, })
             this.setState({status: 'pending'})
-            fetch(`https://pixabay.com/api/?q=${this.props.search}&page=1&key=27704897-33eca0a5ea9474d62773139fd&image_type=photo&orientation=horizontal&per_page=12`).then(res => res.json()).then(data => this.setState({ searchResults:data.hits, status: 'resolved'}))
+            axios(`${url}?q=${this.props.search}&page=1&key=${API_KEY}${options}`).then(({data})  => this.setState({ searchResults:data.hits, status: 'resolved'}))
         
         }
     }
