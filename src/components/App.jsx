@@ -8,8 +8,6 @@ class App extends React.Component{
   state = {
     search: '',
 }
-
-
   onHendlSearch = search => {
     this.setState({ search });
 }
